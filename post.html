@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Login Template</title>
+    <meta name="author" content="David Grzyb">
+    <meta name="description" content="">
+
+    <!-- TailwindCSS -->
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <!-- AlpineJS -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
+        .lato { font-family: lato; }
+        .container { max-width: 900px; }
+
+        /* Hover Menu Button */
+        .blog-menu:hover .blog-menu-dropdown {
+            display: flex !important;
+        }
+
+        .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    </style>
+</head>
+<body class="bg-gray-100 lato">
+    <header class="flex flex-col justify-center w-full bg-white shadow-md">
+        <div x-data="{ open: false }" class="container mx-auto">
+            <div class="flex justify-between items-center py-5 px-4 md:px-0 border-b">
+                <!-- Blog Title -->
+                <a href="index.html" class="text-2xl">Blog</a>
+                <!-- Call to Action -->
+                <div class="hidden md:inline text-gray-600">
+                    <span class="italic">“Modern Javascript”</span> 
+                    book is available! 
+                    <a href="#" class="font-bold text-gray-700 hover:underline">Check it out here</a> ⚡️
+                </div>
+                <!-- Social Icons -->
+                <div class="hidden md:inline">
+                    <a href="#"><i class="fab fa-facebook-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
+                    <a href="#"><i class="fab fa-twitter-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
+                </div>
+                <div class="md:hidden">
+                    <button @click="open = !open" class="focus:outline-none"><i class="fa fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+            <!-- Desktop Nav -->
+            <nav class="flex justify-between items-center py-4 hidden md:flex">
+                <div class="w-1/2 flex justify-between text-gray-700">
+                    <a href="#" class="px-3 py-2 hover:underline">Home</a>
+                    <div class="blog-menu px-3 py-2">
+                        <a href="#" class="relative hover:underline">
+                            Blog
+                            <i class="fa fa-chevron-down ml-1"></i>
+                        </a>
+                        <div class="blog-menu-dropdown hidden absolute pt-5 z-10">
+                            <div class="flex flex-col items-center bg-white rounded shadow-md border border-gray-300 w-56">
+                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between hover:bg-gray-100">Laravel<span>33</span></a>
+                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between border-t hover:bg-gray-100">JavaScript<span>8</span></a>
+                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between border-t hover:bg-gray-100">GatsbyJS<span>3</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="px-3 py-2 hover:underline">About</a>
+                    <a href="#" class="px-3 py-2 hover:underline">Contact</a>
+                </div>
+                <div class="text-gray-700 px-3 py-2 hover:underline">
+                    <a href="#" class=""><i class="fas fa-shopping-cart mr-2"></i> Projects</a>
+                </div>
+            </nav>
+            <!-- Mobile Nav -->
+            <nav x-ref="dropdown" x-show.transition="open" @click.away="open = false" class="flex flex-col items-center justify-center text-lg py-4">
+                <a href="#" class="px-3 py-2 hover:underline">Home</a>
+                <a href="#" class="px-3 py-2 hover:underline">Blog</a>
+                <a href="#" class="px-3 py-2 hover:underline">About</a>
+                <a href="#" class="px-3 py-2 hover:underline">Contact</a>
+                <a href="#" class="px-3 py-2 hover:underline">Projects</a>
+                <div class="flex items-center justify-center mt-2">
+                    <a href="#"><i class="fab fa-facebook-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
+                    <a href="#"><i class="fab fa-twitter-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="w-full mt-4 bg-white">
+        <main class="container mx-auto pb-12 px-3" >
+            <div class="flex items-center justify-between py-6 border-b">
+                <span class="text-gray-500">12 hours ago</span>
+                <span class="py-2 px-3 text-blue-500">Laravel</span>
+            </div>
+            <h1 class="text-5xl font-bold my-8">Keeping Your Business And Clients Safe With Policies</h1>
+            <p class="text-lg text-gray-700 my-6">Now that we have our view and component layer, we need something to manage state and the lifecycle of our application. Redux is also a clear winner here.</p>
+            <p class="text-lg text-gray-700 my-6">Alongside React, Facebook presented a design pattern for one way data flow called Flux. Flux largely delivered on its promise of simplifying state management, but it also brought with it more questions, such as how to store that state and where to do Ajax requests. To answer those questions, countless frameworks were built on top of the Flux pattern: Fluxible, Reflux, Alt, Flummox, Lux, Nuclear, Fluxxor and many, many more. One Flux-like implementation eventually caught the community’s attention, and for good reasons: Redux.</p>
+            <p class="text-lg text-gray-700 my-6">One thing to be careful is the natural instinct to try and abstract away the Redux boilerplate. There’s good reasons behind all those pieces. Make sure you tried it and understand the “why” before trying to blindly improve on it.</p>
+            <h3 class="text-4xl font-bold my-8">Why Javascript?</h3>
+            <p class="text-lg text-gray-700 my-6">JavaScript is the standard language of the web platform. Learning it will allow you to build any app you want for any device or platform you want. Watch this 1 minute video to learn more about what JavaScript can do for you:</p>
+            <div class="embed-container"><iframe class="py-4" src="https://www.youtube-nocookie.com/embed/PkZNo7MFNFg" frameborder='0' allowfullscreen></iframe></div>
+            <p class="text-lg text-gray-700 my-6">Alongside React, Facebook presented a design pattern for one way data flow called Flux. Flux largely delivered on its promise of simplifying state management, but it also brought with it more questions, such as how to store that state and where to do Ajax requests. To answer those questions, countless frameworks were built on top of the Flux pattern: Fluxible, Reflux, Alt, Flummox, Lux, Nuclear, Fluxxor and many, many more. One Flux-like implementation eventually caught the community’s attention, and for good reasons: Redux.</p>
+            <div class="flex justify-between pt-6">
+                <a href="#" class="w-1/2 md:w-1/3">
+                    <div class="flex flex-col md:bg-gray-100 py-4 px-3 md:px-10 md:rounded md:shadow">
+                        <div class="flex items-center justify-between text-gray-600">
+                            <i class="fa fa-chevron-left"></i>
+                            <p>Previous</p>
+                        </div>
+                        <h5 class="text-right text-lg mt-2 overflow-x-hidden">Deno vs. Node.js</h5>
+                    </div>
+                </a>
+                <a href="#" class="w-1/2 md:w-1/3">
+                    <div class="md:bg-gray-100 py-4 px-3 md:px-10 md:rounded md:shadow">
+                        <div class="flex items-center justify-between text-gray-600">
+                            <p>Next</p>
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                        <h5 class="text-lg mt-2 overflow-x-hidden">Laravel 7: What's New</h5>
+                    </div>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <div class="container mx-auto py-10 px-3">
+        <h3 class="text-2xl font-bold">Comments</h3>
+        <div id="disqus_thread" class="mt-6"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT 
+            *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR 
+            *  PLATFORM OR CMS.
+            *  
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: 
+            *  https://disqus.com/admin/universalcode/#configuration-variables
+            */
+            /*
+            var disqus_config = function () {
+                // Replace PAGE_URL with your page's canonical URL variable
+                this.page.url = PAGE_URL;  
+                
+                // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                this.page.identifier = PAGE_IDENTIFIER; 
+            };
+            */
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+                var d = document, s = d.createElement('script');
+                
+                // IMPORTANT: Replace EXAMPLE with your forum shortname!
+                s.src = 'https://EXAMPLE.disqus.com/embed.js';
+                
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>
+            Please enable JavaScript to view the 
+            <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+                comments powered by Disqus.
+            </a>
+        </noscript>
+    </div>
+
+    <footer class="w-full bg-white px-4 md:px-0">
+        <div class="container mx-auto py-6 flex items-center justify-between">
+            <span class="text-gray-500">© Tailwind Personal Blog Template</span>
+            <div>
+                <a href="#"><i class="fab fa-facebook-square text-4xl text-gray-500 hover:text-gray-700 px-1"></i></a>
+                <a href="#"><i class="fab fa-twitter-square text-4xl text-gray-500 hover:text-gray-700 px-1"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
