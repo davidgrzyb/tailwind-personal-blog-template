@@ -20,7 +20,7 @@
 
         /* Hover Menu Button */
         .blog-menu:hover .blog-menu-dropdown {
-            display: block !important;
+            display: flex !important;
         }
     </style>
 </head>
@@ -29,7 +29,7 @@
         <div x-data="{ open: false }" class="container mx-auto">
             <div class="flex justify-between items-center py-5 px-4 md:px-0 border-b">
                 <!-- Blog Title -->
-                <div class="text-2xl">Blog</div>
+                <a href="index.html" class="text-2xl">Blog</a>
                 <!-- Call to Action -->
                 <div class="hidden md:inline text-gray-600">
                     <span class="italic">“Modern Javascript”</span> 
@@ -41,6 +41,9 @@
                     <a href="#"><i class="fab fa-facebook-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
                     <a href="#"><i class="fab fa-twitter-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
                 </div>
+                <div class="md:hidden">
+                    <button @click="open = !open" class="focus:outline-none"><i class="fa fa-bars text-2xl"></i></button>
+                </div>
             </div>
             <!-- Desktop Nav -->
             <nav class="flex justify-between items-center py-4 hidden md:flex">
@@ -51,14 +54,11 @@
                             Blog
                             <i class="fa fa-chevron-down ml-1"></i>
                         </a>
-                        <div class="blog-menu-dropdown absolute flex flex-row items-center justify-between w-64 rounded bg-transparent z-10 pt-4 hidden">
-                            <div class="w-1/2">
-                                Read my Blog Here!
-                            </div>
-                            <div class="w-1/2">
-                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between border border-gray-300 bg-white hover:bg-gray-100">Laravel<span class="">33</span></a>
-                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between border border-gray-300 bg-white hover:bg-gray-100">JavaScript<span class="">8</span></a>
-                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between border border-gray-300 bg-white hover:bg-gray-100">GatsbyJS<span class="">3</span></a>
+                        <div class="blog-menu-dropdown hidden absolute pt-5 z-10">
+                            <div class="flex flex-col items-center bg-white rounded shadow-md border border-gray-300 w-56">
+                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between hover:bg-gray-100">Laravel<span>33</span></a>
+                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between border-t hover:bg-gray-100">JavaScript<span>8</span></a>
+                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between border-t hover:bg-gray-100">GatsbyJS<span>3</span></a>
                             </div>
                         </div>
                     </div>
@@ -70,8 +70,16 @@
                 </div>
             </nav>
             <!-- Mobile Nav -->
-            <nav class="">
-                
+            <nav x-ref="dropdown" x-show.transition="open" @click.away="open = false" class="flex flex-col items-center justify-center text-lg py-4">
+                <a href="#" class="px-3 py-2 hover:underline">Home</a>
+                <a href="#" class="px-3 py-2 hover:underline">Blog</a>
+                <a href="#" class="px-3 py-2 hover:underline">About</a>
+                <a href="#" class="px-3 py-2 hover:underline">Contact</a>
+                <a href="#" class="px-3 py-2 hover:underline">Projects</a>
+                <div class="flex items-center justify-center mt-2">
+                    <a href="#"><i class="fab fa-facebook-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
+                    <a href="#"><i class="fab fa-twitter-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
+                </div>
             </nav>
         </div>
     </header>
