@@ -24,7 +24,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 lato">
+<body class="bg-gray-100 flex flex-col h-screen lato">
     <header class="flex flex-col justify-center w-full bg-white shadow-md">
         <div x-data="{ open: false }" class="container mx-auto">
             <div class="flex justify-between items-center py-5 px-4 md:px-0 border-b">
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="px-3 py-2 hover:underline">About</a>
+                    <a href="about.html" class="px-3 py-2 hover:underline">About</a>
                     <a href="#" class="px-3 py-2 hover:underline">Contact</a>
                 </div>
                 <div class="text-gray-700 px-3 py-2 hover:underline">
@@ -73,7 +73,7 @@
             <nav x-ref="dropdown" x-show.transition="open" @click.away="open = false" class="flex flex-col items-center justify-center text-lg py-4">
                 <a href="#" class="px-3 py-2 hover:underline">Home</a>
                 <a href="#" class="px-3 py-2 hover:underline">Blog</a>
-                <a href="#" class="px-3 py-2 hover:underline">About</a>
+                <a href="about.html" class="px-3 py-2 hover:underline">About</a>
                 <a href="#" class="px-3 py-2 hover:underline">Contact</a>
                 <a href="#" class="px-3 py-2 hover:underline">Projects</a>
                 <div class="flex items-center justify-center mt-2">

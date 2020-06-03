@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Personal Blog</title>
+    <meta name="author" content="David Grzyb">
+    <meta name="description" content="">
+
+    <!-- TailwindCSS -->
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <!-- AlpineJS -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
+        .lato { font-family: lato; }
+        .container { max-width: 900px; }
+
+        /* Hover Menu Button */
+        .blog-menu:hover .blog-menu-dropdown {
+            display: flex !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col h-screen lato">
+    <header class="flex flex-col justify-center w-full bg-white shadow-md">
+        <div x-data="{ open: false }" class="container mx-auto">
+            <div class="flex justify-between items-center py-5 px-4 md:px-0 border-b">
+                <!-- Blog Title -->
+                <a href="index.html" class="text-2xl">Blog</a>
+                <!-- Call to Action -->
+                <div class="hidden md:inline text-gray-600">
+                    <span class="italic">“Modern Javascript”</span> 
+                    book is available! 
+                    <a href="#" class="font-bold text-gray-700 hover:underline">Check it out here</a> ⚡️
+                </div>
+                <!-- Social Icons -->
+                <div class="hidden md:inline">
+                    <a href="#"><i class="fab fa-facebook-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
+                    <a href="#"><i class="fab fa-twitter-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
+                </div>
+                <div class="md:hidden">
+                    <button @click="open = !open" class="focus:outline-none"><i class="fa fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+            <!-- Desktop Nav -->
+            <nav class="flex justify-between items-center py-4 hidden md:flex">
+                <div class="w-1/2 flex justify-between text-gray-700">
+                    <a href="#" class="px-3 py-2 hover:underline">Home</a>
+                    <div class="blog-menu px-3 py-2">
+                        <a href="#" class="relative hover:underline">
+                            Blog
+                            <i class="fa fa-chevron-down ml-1"></i>
+                        </a>
+                        <div class="blog-menu-dropdown hidden absolute pt-5 z-10">
+                            <div class="flex flex-col items-center bg-white rounded shadow-md border border-gray-300 w-56">
+                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between hover:bg-gray-100">Laravel<span>33</span></a>
+                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between border-t hover:bg-gray-100">JavaScript<span>8</span></a>
+                                <a href="#" class="w-full text-gray-600 p-4 flex items-center justify-between border-t hover:bg-gray-100">GatsbyJS<span>3</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="about.html" class="px-3 py-2 hover:underline">About</a>
+                    <a href="#" class="px-3 py-2 hover:underline">Contact</a>
+                </div>
+                <div class="text-gray-700 px-3 py-2 hover:underline">
+                    <a href="#" class=""><i class="fas fa-shopping-cart mr-2"></i> Projects</a>
+                </div>
+            </nav>
+            <!-- Mobile Nav -->
+            <nav x-ref="dropdown" x-show.transition="open" @click.away="open = false" class="flex flex-col items-center justify-center text-lg py-4">
+                <a href="#" class="px-3 py-2 hover:underline">Home</a>
+                <a href="#" class="px-3 py-2 hover:underline">Blog</a>
+                <a href="about.html" class="px-3 py-2 hover:underline">About</a>
+                <a href="#" class="px-3 py-2 hover:underline">Contact</a>
+                <a href="#" class="px-3 py-2 hover:underline">Projects</a>
+                <div class="flex items-center justify-center mt-2">
+                    <a href="#"><i class="fab fa-facebook-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
+                    <a href="#"><i class="fab fa-twitter-square text-4xl text-gray-700 hover:text-gray-600 px-1"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="w-full flex-grow my-10">
+        <div class="container mx-auto flex bg-white rounded shadow">
+            <div class="w-1/4 flex flex-col items-center border-r">
+                <img src="https://source.unsplash.com/tidSLv-UaNs/200x200" class="rounded-full h-24 w-24 border-2 border-gray-400 shadow mt-10">
+                <a href="#" class="w-full text-center border-t border-b text-gray-600 text-lg hover:bg-gray-100 py-3 mt-10">
+                    <i class="far fa-file-alt mr-2"></i> My Resume
+                </a>
+            </div>
+            <div class="w-3/4 p-5">
+               <h1 class="text-4xl font-bold py-2">Tim Smith</h1>
+               <p class="text-gray-600 py-2">Web Developer in Ontario, Canada</p>
+               <p class="text-lg leading-relaxed py-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ulla corper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendr rit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sitamet, consectetuer adipiscing elit.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full flex-shrink-0 bg-white px-4 md:px-0">
+        <div class="container mx-auto py-6 flex items-center justify-between">
+            <span class="text-gray-500">© Tailwind Personal Blog Template</span>
+            <div>
+                <a href="#"><i class="fab fa-facebook-square text-4xl text-gray-500 hover:text-gray-700 px-1"></i></a>
+                <a href="#"><i class="fab fa-twitter-square text-4xl text-gray-500 hover:text-gray-700 px-1"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
